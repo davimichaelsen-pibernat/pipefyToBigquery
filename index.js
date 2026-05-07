@@ -20,13 +20,13 @@ async function main() {
         //     table.TABLE_ID
         // );
         await pipefyToBQIncremental(
-            "306998372",
+            table.PIPE_ID,
             tokenBq,
-            "warehouse-pibernat",
-            "SPA",
-            "EUROFARMA_CARDS_TESTE",
-            "pipefy_tables_incr",
-            "EUROFARMA_CARDS_INCR",
+            table.PROJECT_ID,
+            table.DATASET_ID,
+            table.TABLE_ID,
+            table.DATASET_ID_INCR,
+            table.TABLE_ID_INCR,
             2
         );
     }

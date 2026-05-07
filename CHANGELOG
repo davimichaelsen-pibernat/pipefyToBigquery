@@ -1,7 +1,11 @@
-# Pipefyt to BQ 1.0.0
+# Pipefyt to BQ
 
-## Novo
+## 1.0.1
+
+### Corrigido
+    - merge incremental
+
+## 1.0.0
 
 ### Adicionado
-
     - Lançamento da aplicação. Permite o envio de pipe para o BQ,
