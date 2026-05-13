@@ -12,23 +12,23 @@ async function main() {
     const tables = config.TABLES_LIST;
 
     for(const table of tables){
-        // await pipefyToBQ(
-        //     table.PIPE_ID,
-        //     tokenBq,
-        //     table.PROJECT_ID,
-        //     table.DATASET_ID,
-        //     table.TABLE_ID
-        // );
-        await pipefyToBQIncremental(
+        await pipefyToBQ(
             table.PIPE_ID,
             tokenBq,
             table.PROJECT_ID,
             table.DATASET_ID,
-            table.TABLE_ID,
-            table.DATASET_ID_INCR,
-            table.TABLE_ID_INCR,
-            2
+            table.TABLE_ID
         );
+        // await pipefyToBQIncremental(
+        //     table.PIPE_ID,
+        //     tokenBq,
+        //     table.PROJECT_ID,
+        //     table.DATASET_ID,
+        //     table.TABLE_ID,
+        //     table.DATASET_ID_INCR,
+        //     table.TABLE_ID_INCR,
+        //     2
+        // );
     }
 
 

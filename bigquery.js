@@ -42,12 +42,18 @@ async function processPipefyToBQ({
   let fieldsArr = [];
 
   pipeData.data.pipe.phases.forEach((phase) => {
-    phase.fields.forEach((f) => fieldsArr.push([f.id, f.type]));
+    phase.fields.forEach((f) => {
+      if(f.type != "statement"){
+        fieldsArr.push([f.id, f.type])
+      }
+    });
   });
 
-  pipeData.data.pipe.start_form_fields.forEach((f) =>
-    fieldsArr.push([f.id, f.type])
-  );
+  pipeData.data.pipe.start_form_fields.forEach((f) =>{
+    if(f.type != "statement"){
+      fieldsArr.push([f.id, f.type])
+    }
+  });
 
   fieldsArr.push(["node_id", "id"]);
 
@@ -85,8 +91,10 @@ async function processPipefyToBQ({
       ) {
         val = formatToBQTimestamp(val);
       }
+      if(f.field.type != "statement"){
+        obj[f.field.id] = val;
+      }
 
-      obj[f.field.id] = val;
     });
 
     return obj;
