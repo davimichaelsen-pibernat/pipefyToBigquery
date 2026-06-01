@@ -8,27 +8,31 @@ process.env.GOOGLE_APPLICATION_CREDENTIALS = config.GBQ_PATH
 process.env.NODE_EXTRA_CA_CERTS = "combined-certs.pem"
 
 async function main() {
-    const tokenBq = await getPipefyAccessToken();
+    const tokenBq = config.PIPEFY_TOKEN != "" ? config.PIPEFY_TOKEN : await getPipefyAccessToken();
     const tables = config.TABLES_LIST;
 
+    var nowDate = new Date();
+    var hours = nowDate.getHours() < 8 && nowDate.getHours() > 0 && nowDate.getMinutes() < 25 ? 24 : 1;
+
+
     for(const table of tables){
-        await pipefyToBQ(
-            table.PIPE_ID,
-            tokenBq,
-            table.PROJECT_ID,
-            table.DATASET_ID,
-            table.TABLE_ID
-        );
-        // await pipefyToBQIncremental(
+        // await pipefyToBQ(
         //     table.PIPE_ID,
         //     tokenBq,
         //     table.PROJECT_ID,
         //     table.DATASET_ID,
-        //     table.TABLE_ID,
-        //     table.DATASET_ID_INCR,
-        //     table.TABLE_ID_INCR,
-        //     2
+        //     table.TABLE_ID
         // );
+        await pipefyToBQIncremental(
+            table.PIPE_ID,
+            tokenBq,
+            table.PROJECT_ID,
+            table.DATASET_ID,
+            table.TABLE_ID,
+            table.DATASET_ID_INCR,
+            table.TABLE_ID_INCR,
+            hours
+        );
     }
 
 

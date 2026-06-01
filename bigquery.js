@@ -85,7 +85,7 @@ async function processPipefyToBQ({
       let val = f.native_value;
 
       if (
-        ["date", "due_date", "date_time", "datetime"].includes(
+        ["date", "due_date", "date_time", "datetime", "timestamp"].includes(
           f.field.type
         )
       ) {

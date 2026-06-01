@@ -6,7 +6,8 @@ const isNullOrNothing = (prop) =>
   const formatToBQTimestamp = (dateStr) => {
     if (!dateStr || typeof dateStr !== "string") return "";
   
-    let cleaned = dateStr.trim();
+    let cleaned = dateStr.split(" -")
+    cleaned = cleaned[0].trim();
   
     const regexBR = /^(\d{2})\/(\d{2})\/(\d{4})(.*)$/;
     const matchBR = cleaned.match(regexBR);

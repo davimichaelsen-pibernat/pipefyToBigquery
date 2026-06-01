@@ -1,5 +1,18 @@
 # Pipefyt to BQ
 
+## 1.0.3
+
+### Ajuste
+    - Primeira atualização do dia puxa 24h para trás
+
+## 1.0.2
+
+### Adicionado
+    - Possibilidade de executar apenas com TOKEN_PIPEFY
+
+### Corrigido
+    - Erro ao transformar timestamp do pipefy para o bigquery
+
 ## 1.0.1
 
 ### Corrigido
